@@ -10,6 +10,7 @@ public class SpiralMatrix_59 {
 		 space[0] = n-1;
 		 int dim = n-1;
 		 n--;
+		 //the number of spaces for every direction
 		 for(int i=1;i<=2*dim;i+=2){
 			 space[i] = n;
 			 space[i+1] = n;
