@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class UniqueBinarySearchTreesII {
+	 public class TreeNode {
+		      int val;
+		      TreeNode left;
+		      TreeNode right;
+		      TreeNode(int x) { val = x; }
+		  }
+	 public List<TreeNode> generateTrees(int n) {
+ 	    if(n==0)
+ 	        return new ArrayList<TreeNode>();
+	        return generate(1,n);
+	    }
+	private List<TreeNode> generate(int start, int end) {
+		// TODO Auto-generated method stub
+		List<TreeNode> list = new ArrayList<TreeNode>();
+		if(start>end){
+			list.add(null);
+			return list;
+		}
+		for(int rootVal=start;rootVal<=end;rootVal++){
+			
+			List<TreeNode> leftSubTree = generate(start, rootVal-1);
+			List<TreeNode> rightSubTree = generate(rootVal+1, end);
+			for(TreeNode left : leftSubTree){
+				for(TreeNode right : rightSubTree){
+				    TreeNode root = new TreeNode(rootVal);
+					root.left = left;
+					root.right = right;
+					list.add(root);
+				}
+			}
+		}
+		return list;
+		
+	}
+}
