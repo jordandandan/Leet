@@ -42,6 +42,8 @@ public class BinaryTreeInorderTraversal {
 	    		   root = stack.pop();
 	    		   res.add(root.val);
 	    		   root = root.right;
+			   if(root!=null)
+				   break;
 	    	   }
 	       }
 	       return res;
